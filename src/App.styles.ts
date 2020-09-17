@@ -44,7 +44,11 @@ export const LayoutCompleteAnimation = keyframes`
   }
 `;
 
-export const Layout = styled.div`
+interface TitleProps {
+   isComplete: boolean;
+};
+
+export const Layout = styled.div<{isComplete: boolean}>`
   min-height: 100%;
   width: 100%;
   position: relative;
@@ -81,7 +85,7 @@ export const DoduAnimationComplete = keyframes`
   }
 `;
 
-export const PereDodu = styled.div`
+export const PereDodu = styled.div<{isComplete: boolean}>`
   position: absolute;
   top: 0;
   left: 0;
@@ -138,7 +142,7 @@ export const BackgroundLayout = styled.div`
   z-index: 0;
 `;
 
-export const ScoreBarBubble = styled.div`
+export const ScoreBarBubble: any = styled.div<{score?: number}>`
   position: absolute;
   bottom: 14px;
   transition: left 0.2s;
@@ -169,7 +173,7 @@ export const ScoreBar = styled.div`
   cursor: auto;
 `;
 
-export const ScoreBarAdvancement = styled.div`
+export const ScoreBarAdvancement = styled.div<{score: number}>`
   position: absolute;
   top: 3px;
   left: 3px;
@@ -192,7 +196,7 @@ export const RightScoreBarBubble = styled(ScoreBarBubble)`
   z-index: 1;
 `;
 
-export const CordonWrapper = styled.div`
+export const CordonWrapper = styled.div<{top?: number, left?: number, scale?:number, opacity?:number, isRotating: boolean}>`
   ${({ top, left, scale, opacity }) =>
     css`
       position: absolute;
@@ -217,7 +221,7 @@ export const CordonWrapper = styled.div`
     `}
 `;
 
-export const SvgWrapper = styled.div`
+export const SvgWrapper = styled.div<{rotation: number, isRotating: boolean}>`
   ${({ rotation }) =>
     css`
       transform: rotate(${rotation}deg);

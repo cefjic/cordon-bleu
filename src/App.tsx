@@ -14,7 +14,7 @@ import Cordon from "./Cordon";
 
 const minOpacity = 0.15;
 
-const randomLocalization = n => {
+const randomLocalization = (n: number) => {
   const opacity = Math.random();
   return {
     top: Math.floor(Math.random() * 100),
@@ -31,7 +31,7 @@ const list = Array.from({ length: nbCordons }, (_, k) => k + 1).map(index =>
   randomLocalization(index)
 );
 
-const CordonsList = ({ addOne, removeOne }) => {
+const CordonsList = ({ addOne, removeOne }: { addOne: () => void, removeOne: () => void }) => {
   return (
     <BackgroundWrapper>
       <BackgroundLayout>
@@ -49,7 +49,7 @@ const CordonsList = ({ addOne, removeOne }) => {
   );
 };
 
-const Score = ({ score, nbRotating }) => (
+const Score = ({ score, nbRotating }: { score: number, nbRotating:number }) => (
   <ScoreBar>
     <ScoreBarAdvancement score={score} />
     <ScoreBarBubble score={score}>{nbRotating}</ScoreBarBubble>
@@ -73,7 +73,7 @@ const App = () => {
 
   const isComplete = nbCordons === nbRotating;
 
-  const onEscape = ({ keyCode }) => {
+  const onEscape = ({ keyCode }:{ keyCode: number}) => {
     if (keyCode === 83) {
       setShowScore(!showScore);
     }

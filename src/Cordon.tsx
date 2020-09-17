@@ -3,7 +3,14 @@ import { CordonWrapper, SvgWrapper } from "./App.styles";
 import CordonImage from "./cordon-bleu.svg";
 import { ReactSVG } from "react-svg";
 
-const Cordon = ({ addOne, removeOne, rotation, index, ...rest }) => {
+interface MyProps {
+  addOne: () => void
+  removeOne: () => void
+  rotation: number
+  index: number
+}
+
+const Cordon = ( {addOne, removeOne, rotation, index, ...rest}: MyProps) => {
   const [isRotating, setRotation] = useState(false);
 
   const toggleRotation = () => {
